@@ -1,0 +1,38 @@
+<p>All Posts</p>
+
+<div
+  class="mx-10 my-14 grid grid-cols-4 gap-4"
+  *ngIf="getposts().length; else noposts"
+>
+  <div class="max-w-lg mx-auto" *ngFor="let post of getposts()">
+    <div
+      class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5"
+    >
+      <a href="#">
+        <img class="rounded-t-lg" src="{{ post.img }}" alt="" />
+      </a>
+      <div class="p-5">
+        <a href="#">
+          <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">
+            {{ post.title }}
+          </h5>
+        </a>
+        <p class="font-normal text-gray-700 mb-3">
+          {{ post.des }}
+        </p>
+
+        <form >
+          <input type="email" value="email@gmail.com" name="email" id="email" />
+          <button
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+            (click)="handleClick($event)"
+          >
+            Read more
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noposts> No Posts Found </ng-template>
